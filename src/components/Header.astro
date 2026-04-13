@@ -108,16 +108,15 @@ const experienceLinks = [
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
       Kontakt
     </a>
-    <button id="mobile-bottom-menu-btn" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/70">
-      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      Meny
-    </button>
+    <a href="/sa-har-gor-du" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/sa-har-gor-du" ? "text-cyan" : "text-white/70"]}>
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
+      Hur?
+    </a>
   </div>
 </nav>
 
 <script>
   const btn = document.getElementById("mobile-menu-btn")!;
-  const bottomBtn = document.getElementById("mobile-bottom-menu-btn")!;
   const menu = document.getElementById("mobile-menu")!;
   const iconOpen = document.getElementById("menu-icon-open")!;
   const iconClose = document.getElementById("menu-icon-close")!;
@@ -131,7 +130,6 @@ const experienceLinks = [
   }
 
   btn.addEventListener("click", toggleMenu);
-  bottomBtn.addEventListener("click", toggleMenu);
   menu.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => {
       menu.classList.add("hidden");
