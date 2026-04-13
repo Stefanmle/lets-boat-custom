@@ -71,7 +71,7 @@ const experienceLinks = [
   <div id="mobile-menu" class="hidden lg:hidden">
     <div class="border-t border-white/10 bg-ocean-light px-4 pb-6 pt-4">
       <nav class="space-y-1" aria-label="Mobilnavigation">
-        <p class="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wider text-white/40">{i.nav.experiences}</p>
+        <p class="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wider text-white/70">{i.nav.experiences}</p>
         {experienceLinks.map((link) => (
           <a href={link.href} class:list={["block rounded-lg px-3 py-2.5 text-sm transition-colors", currentPath === link.href ? "bg-white/10 font-medium text-cyan" : "text-white/70 hover:bg-white/5"]}>
             {link.label}
@@ -90,25 +90,25 @@ const experienceLinks = [
 <!-- Mobile bottom nav -->
 <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-ocean-light bg-ocean lg:hidden" aria-label="Snabbnavigation">
   <div class="mx-auto flex h-16 max-w-md items-center justify-around px-2">
-    <a href="/" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/" ? "text-cyan" : "text-white/50"]}>
+    <a href="/" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/" ? "text-cyan" : "text-white/70"]}>
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
       Hem
     </a>
-    <a href="/#upplevelser" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/50">
+    <a href="/#upplevelser" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/70">
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
       Upplevelser
     </a>
-    <a href={bookingUrl} target="_blank" rel="noopener" class="flex flex-col items-center gap-0.5 px-2 py-1">
-      <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cyan shadow-lg shadow-cyan/30">
+    <a href={bookingUrl} target="_blank" rel="noopener" class="flex flex-col items-center gap-0.5 px-2 py-1 -mt-3">
+      <span class="flex h-12 w-12 items-center justify-center rounded-full bg-cyan shadow-lg shadow-cyan/30">
         <svg class="h-5 w-5 text-ocean" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
       </span>
       <span class="text-[10px] font-bold text-cyan">Boka</span>
     </a>
-    <a href="/kontakt" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/kontakt" ? "text-cyan" : "text-white/50"]}>
+    <a href="/kontakt" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/kontakt" ? "text-cyan" : "text-white/70"]}>
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
       Kontakt
     </a>
-    <button id="mobile-bottom-menu-btn" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/50">
+    <button id="mobile-bottom-menu-btn" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/70">
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       Meny
     </button>
