@@ -86,21 +86,21 @@ export default {
     steps: [
       {
         number: "01",
-        title: "Boka online",
+        title: "Boka er båt",
         description:
-          "Välj dag, starttid och turlängd. Boka enkelt via datorn eller mobilen.",
+          "Boka er båt online och när det passar er. I förväg via datorn hemma eller direkt i din mobiltelefon vid våra båtar.",
       },
       {
         number: "02",
         title: "Aktivera båten",
         description:
-          "Starta båten via länken i din bokningsbekräftelse eller SMS-påminnelsen.",
+          "Starta er båt via en länk i bokningsbekräftelsen du fått via e-post. Eller klicka på länken i det påminnelse-SMS du får 15 minuter innan er båttur startar.",
       },
       {
         number: "03",
         title: "Åk iväg!",
         description:
-          "Utforska Göteborgs fantastiska kanaler. Avaktivera båten vid återlämning.",
+          "Åk iväg och upplev Göteborgs fantastiska kanaler tillsammans. Vid återlämning avaktiverar du båten på samma sätt som du startade den. Enkelt!",
       },
     ],
   },
