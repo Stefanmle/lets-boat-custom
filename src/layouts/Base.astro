@@ -11,7 +11,9 @@ interface Props {
 }
 
 const { title, description, ogImage = "/og-image.jpg", canonical } = Astro.props;
-const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const siteUrl = import.meta.env.SITE ?? Astro.site?.href ?? "https://lets-boat-custom.vercel.app";
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!doctype html>
@@ -41,14 +43,14 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content="sv_SE" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
