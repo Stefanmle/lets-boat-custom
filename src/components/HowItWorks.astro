@@ -1,11 +1,19 @@
 ---
 import { t } from "@/i18n";
 const i = t();
+
+const stepIcons = [
+  `<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"/>`,
+  `<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>`,
+  `<path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>`,
+];
 ---
 
 <section class="relative overflow-hidden bg-white py-20 sm:py-28">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
+  <!-- Subtle background pattern -->
+  <div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, #253861 1px, transparent 0); background-size: 40px 40px;"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
       <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">{i.howItWorks.subtitle}</span>
       <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl lg:text-5xl">
@@ -13,22 +21,23 @@ const i = t();
       </h2>
     </div>
 
-    <!-- Steps -->
-    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+    <div class="relative mt-16 grid gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-12">
+      <!-- Connector line (desktop) -->
+      <div class="absolute left-0 right-0 top-16 hidden h-0.5 bg-gradient-to-r from-transparent via-cyan/20 to-transparent lg:block"></div>
+
       {i.howItWorks.steps.map((step, idx) => (
-        <div class="relative">
-          {/* Connector line */}
-          {idx < 2 && (
-            <div class="absolute left-1/2 top-12 hidden h-0.5 w-full bg-gradient-to-r from-cyan/30 to-cyan/10 lg:block"></div>
-          )}
-          <div class="relative flex flex-col items-center text-center">
-            {/* Number circle */}
-            <div class="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-ocean to-ocean-light shadow-xl shadow-ocean/20">
-              <span class="font-heading text-3xl font-bold text-cyan">{step.number}</span>
-            </div>
-            <h3 class="mt-6 font-heading text-xl font-bold text-ocean">{step.title}</h3>
-            <p class="mt-3 max-w-xs text-sm leading-relaxed text-text/70">{step.description}</p>
+        <div class="relative rounded-2xl border border-sand-dark bg-sand/50 p-8 text-center transition-all hover:border-cyan/20 hover:shadow-lg sm:p-10">
+          {/* Number + icon */}
+          <div class="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-ocean to-ocean-light shadow-xl shadow-ocean/20 sm:h-24 sm:w-24">
+            <svg class="h-8 w-8 text-cyan sm:h-10 sm:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <Fragment set:html={stepIcons[idx]} />
+            </svg>
           </div>
+          <div class="mx-auto mt-2 flex h-7 w-7 items-center justify-center rounded-full bg-cyan text-xs font-bold text-ocean">
+            {step.number}
+          </div>
+          <h3 class="mt-4 font-heading text-xl font-bold text-ocean sm:text-2xl">{step.title}</h3>
+          <p class="mt-3 text-base leading-relaxed text-text/70">{step.description}</p>
         </div>
       ))}
     </div>
