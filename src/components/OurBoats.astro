@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import boatImg from "@/assets/images/boats-sunset.webp";
+import dockImg from "@/assets/images/dock-staff.webp";
+
+const specs = [
+  { icon: "users", label: "Upp till 12 personer", desc: "Gott om plats för hela gänget" },
+  { icon: "bolt", label: "100% elektrisk", desc: "Tyst och miljövänlig – inga avgaser" },
+  { icon: "no-license", label: "Ingen licens krävs", desc: "Vem som helst kan styra" },
+  { icon: "food", label: "Ta med mat & dryck", desc: "Egen picknick, bubbel och snacks" },
+  { icon: "vest", label: "Flytvästar ingår", desc: "Barn- och vuxenstorlekar ombord" },
+  { icon: "cancel", label: "Fri avbokning", desc: "Upp till 24 timmar före avfärd" },
+];
+
+const iconMap: Record<string, string> = {
+  users: `<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>`,
+  bolt: `<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>`,
+  "no-license": `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+  food: `<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>`,
+  vest: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
+  cancel: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+};
+---
+
+<section class="bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <!-- Images -->
+      <div class="relative">
+        <Image
+          src={boatImg}
+          alt="Let's Boat elbåtar vid bryggan i Göteborg"
+          class="w-full rounded-2xl shadow-xl"
+          widths={[400, 700]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+        <div class="absolute -bottom-6 -right-4 hidden w-48 overflow-hidden rounded-xl border-4 border-white shadow-lg sm:block">
+          <Image
+            src={dockImg}
+            alt="Let's Boat personal vid bryggan"
+            class="w-full"
+            widths={[200]}
+            sizes="200px"
+          />
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Våra båtar</span>
+        <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+          Lyxiga elbåtar för upp till 12 personer
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-text/80">
+          Våra moderna elbåtar är designade för komfort och enkelhet. Tystgående, miljövänliga och otroligt enkla att manövrera – perfekta oavsett om du aldrig satt foten i en båt förut.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {specs.map((spec) => (
+            <div class="flex items-start gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ocean/5">
+                <svg class="h-5 w-5 text-ocean" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <Fragment set:html={iconMap[spec.icon]} />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-ocean">{spec.label}</p>
+                <p class="text-xs text-text/70">{spec.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
