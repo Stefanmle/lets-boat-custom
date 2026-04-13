@@ -21,7 +21,6 @@ const cardData: Record<string, ImageMetadata> = {
 ---
 
 <section class="relative overflow-hidden bg-sand py-20 sm:py-28">
-  <div id="upplevelser" class="absolute top-28 sm:top-16"></div>
   <div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, #253861 1px, transparent 0); background-size: 40px 40px;"></div>
 
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -57,7 +56,7 @@ const cardData: Record<string, ImageMetadata> = {
       <p class="mt-1 text-xs text-text/70">— Tugba G. via TripAdvisor</p>
     </div>
 
-    <div class="mx-auto max-w-2xl text-center">
+    <div id="upplevelser" class="mx-auto max-w-2xl text-center">
       <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">{i.experiences.subtitle}</span>
       <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl lg:text-5xl">
         {i.experiences.title}
