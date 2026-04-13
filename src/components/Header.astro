@@ -1,0 +1,143 @@
+---
+import { Image } from "astro:assets";
+import logoWhite from "@/assets/images/logo-white.webp";
+import { t } from "@/i18n";
+const i = t();
+const currentPath = Astro.url.pathname;
+const bookingUrl = "https://lets-boat.letsbook.app/sv-se/form/boats?boatModelId=f000715e-a251-42c5-b181-62566984bc42&dockId=e8fa42df-57d7-4d40-b5fd-6680c040d90e";
+
+const experienceLinks = [
+  { href: "/familjetur", label: i.nav.family },
+  { href: "/mohippa", label: i.nav.bachelorette },
+  { href: "/teambuilding", label: i.nav.teambuilding },
+  { href: "/afterwork", label: i.nav.afterwork },
+  { href: "/kompisarna", label: i.nav.friends },
+  { href: "/dejten", label: i.nav.date },
+  { href: "/att-gora-i-goteborg", label: i.nav.thingsToDo },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-ocean shadow-lg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between lg:h-20">
+      <a href="/" class="flex-shrink-0" aria-label="Let's Boat – Hem">
+        <Image src={logoWhite} alt="Let's Boat" class="h-7 w-auto lg:h-9" widths={[140, 220]} sizes="220px" loading="eager" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Huvudnavigation">
+        <div class="group relative">
+          <button class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white hover:bg-white/10" aria-expanded="false" aria-haspopup="true">
+            {i.nav.experiences}
+            <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="pointer-events-none absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+            <div class="w-56 rounded-xl border border-white/10 bg-ocean-light p-2 shadow-xl backdrop-blur-lg">
+              {experienceLinks.map((link) => (
+                <a href={link.href} class:list={["block rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-white/10", currentPath === link.href ? "bg-white/10 font-medium text-cyan" : "text-white/80"]}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <a href="/sa-har-gor-du" class:list={["rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-white hover:bg-white/10", currentPath === "/sa-har-gor-du" ? "text-cyan" : "text-white/80"]}>
+          {i.nav.howItWorks}
+        </a>
+        <a href="/kontakt" class:list={["rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-white hover:bg-white/10", currentPath === "/kontakt" ? "text-cyan" : "text-white/80"]}>
+          {i.nav.contact}
+        </a>
+        <a href="/karta" class:list={["rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-white hover:bg-white/10", currentPath === "/karta" ? "text-cyan" : "text-white/80"]}>
+          {i.nav.map}
+        </a>
+        <a href="https://www.google.com/maps/place/Let%C2%B4s+Boat/@57.7110522,11.9623319,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3d1b9b45d51:0xc02f276620d8b0e7!8m2!3d57.7110494!4d11.9649122!16s%2Fg%2F11q_6125d6" target="_blank" rel="noopener" class="rounded-lg px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white hover:bg-white/10">
+          {i.nav.findUs}
+        </a>
+
+        <a href={bookingUrl} target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 rounded-full bg-cyan px-5 py-2.5 text-sm font-semibold text-ocean shadow-lg shadow-cyan/25 transition-all hover:bg-cyan-dark hover:shadow-cyan/40 hover:scale-105">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          {i.nav.bookNow}
+        </a>
+      </nav>
+
+      <button id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-lg p-2 text-white lg:hidden" aria-label="Öppna meny" aria-expanded="false">
+        <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden">
+    <div class="border-t border-white/10 bg-ocean-light px-4 pb-6 pt-4">
+      <nav class="space-y-1" aria-label="Mobilnavigation">
+        <p class="px-3 pb-1 pt-3 text-xs font-semibold uppercase tracking-wider text-white/40">{i.nav.experiences}</p>
+        {experienceLinks.map((link) => (
+          <a href={link.href} class:list={["block rounded-lg px-3 py-2.5 text-sm transition-colors", currentPath === link.href ? "bg-white/10 font-medium text-cyan" : "text-white/70 hover:bg-white/5"]}>
+            {link.label}
+          </a>
+        ))}
+        <div class="my-3 border-t border-white/10"></div>
+        <a href="/sa-har-gor-du" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">{i.nav.howItWorks}</a>
+        <a href="/kontakt" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">{i.nav.contact}</a>
+        <a href="/karta" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">{i.nav.map}</a>
+        <a href="https://www.google.com/maps/place/Let%C2%B4s+Boat/@57.7110522,11.9623319,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3d1b9b45d51:0xc02f276620d8b0e7!8m2!3d57.7110494!4d11.9649122!16s%2Fg%2F11q_6125d6" target="_blank" rel="noopener" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">{i.nav.findUs}</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile bottom nav -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-ocean-light bg-ocean lg:hidden" aria-label="Snabbnavigation">
+  <div class="mx-auto flex h-16 max-w-md items-center justify-around px-2">
+    <a href="/" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/" ? "text-cyan" : "text-white/50"]}>
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Hem
+    </a>
+    <a href="/#upplevelser" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/50">
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+      Upplevelser
+    </a>
+    <a href={bookingUrl} target="_blank" rel="noopener" class="flex flex-col items-center gap-0.5 px-2 py-1">
+      <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cyan shadow-lg shadow-cyan/30">
+        <svg class="h-5 w-5 text-ocean" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </span>
+      <span class="text-[10px] font-bold text-cyan">Boka</span>
+    </a>
+    <a href="/kontakt" class:list={["flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium", currentPath === "/kontakt" ? "text-cyan" : "text-white/50"]}>
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      Kontakt
+    </a>
+    <button id="mobile-bottom-menu-btn" class="flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-medium text-white/50">
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Meny
+    </button>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn")!;
+  const bottomBtn = document.getElementById("mobile-bottom-menu-btn")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const iconOpen = document.getElementById("menu-icon-open")!;
+  const iconClose = document.getElementById("menu-icon-close")!;
+
+  function toggleMenu() {
+    const isHidden = menu.classList.toggle("hidden");
+    iconOpen.classList.toggle("hidden", !isHidden);
+    iconClose.classList.toggle("hidden", isHidden);
+    btn.setAttribute("aria-expanded", String(!isHidden));
+    if (!isHidden) window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  btn.addEventListener("click", toggleMenu);
+  bottomBtn.addEventListener("click", toggleMenu);
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

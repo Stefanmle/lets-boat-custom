@@ -1,0 +1,42 @@
+---
+import { t } from "@/i18n";
+const i = t();
+---
+
+<section class="relative overflow-hidden bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+    <div class="rounded-3xl bg-gradient-to-br from-ocean to-ocean-light p-10 shadow-2xl sm:p-16">
+      <!-- Decorative waves -->
+      <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5" width="600" height="400" viewBox="0 0 600 400" fill="none">
+        <path d="M0 200C100 150 200 250 300 200C400 150 500 250 600 200" stroke="white" stroke-width="2"/>
+        <path d="M0 220C100 170 200 270 300 220C400 170 500 270 600 220" stroke="white" stroke-width="2"/>
+        <path d="M0 240C100 190 200 290 300 240C400 190 500 290 600 240" stroke="white" stroke-width="2"/>
+      </svg>
+
+      <h2 class="relative font-heading text-3xl font-bold text-white sm:text-4xl">
+        {i.contact.giftCard}
+      </h2>
+
+      <div class="relative mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href="/kontakt"
+          class="inline-flex items-center gap-2 rounded-full bg-cyan px-8 py-4 text-base font-semibold text-ocean shadow-lg shadow-cyan/25 transition-all hover:scale-105 hover:bg-cyan-dark"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {i.nav.contact}
+        </a>
+        <a
+          href={`tel:${i.contact.phone.replace(/\s/g, "")}`}
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-all hover:bg-white/10"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          {i.contact.phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

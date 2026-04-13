@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import Hero from "@/components/Hero.astro";
+import Experiences from "@/components/Experiences.astro";
+import VideoReviews from "@/components/VideoReviews.astro";
+import HowItWorks from "@/components/HowItWorks.astro";
+import Pricing from "@/components/Pricing.astro";
+import Included from "@/components/Included.astro";
+import Locations from "@/components/Locations.astro";
+import FindUs from "@/components/FindUs.astro";
+import ContactCta from "@/components/ContactCta.astro";
+import { t } from "@/i18n";
+
+const i = t();
+---
+
+<Base title={i.meta.title} description={i.meta.description}>
+  <Hero />
+  <Experiences />
+  <VideoReviews />
+  <HowItWorks />
+  <Pricing />
+  <Included />
+  <Locations />
+  <FindUs />
+  <ContactCta />
+</Base>

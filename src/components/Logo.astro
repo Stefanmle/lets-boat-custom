@@ -1,0 +1,41 @@
+---
+interface Props {
+  class?: string;
+  color?: "white" | "ocean";
+}
+const { class: className = "h-8 w-auto", color = "ocean" } = Astro.props;
+const fill = color === "white" ? "#ffffff" : "#253861";
+---
+
+<svg viewBox="0 0 320 60" class={className} aria-label="Let's Boat" role="img">
+  <!-- L -->
+  <path d="M0 5h12v38h18v12H0V5z" fill={fill}/>
+  <!-- E -->
+  <path d="M36 5h30v12H48v8h16v11H48v9h18v10H36V5z" fill={fill}/>
+  <!-- T -->
+  <path d="M72 5h30v12H92v38H82V17H72V5z" fill={fill}/>
+  <!-- Anchor (apostrophe) -->
+  <g transform="translate(103, 0)" fill={fill}>
+    <!-- Ring -->
+    <circle cx="7" cy="5" r="3.5" fill="none" stroke={fill} stroke-width="2"/>
+    <!-- Shaft -->
+    <rect x="5.5" y="8" width="3" height="14" rx="1"/>
+    <!-- Crossbar -->
+    <rect x="1" y="14" width="12" height="2.5" rx="1"/>
+    <!-- Left hook -->
+    <path d="M2 16.5c0 4 3 6 5 6" fill="none" stroke={fill} stroke-width="2" stroke-linecap="round"/>
+    <!-- Right hook -->
+    <path d="M12 16.5c0 4-3 6-5 6" fill="none" stroke={fill} stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- S -->
+  <path d="M118 5h28v12h-16v6h16v20c0 7-5 12-12 12h-16V43h16v-8h-16V5z" fill={fill}/>
+  <!-- space -->
+  <!-- B -->
+  <path d="M170 5h24c7 0 12 5 12 11v2c0 4-2 7-5 9 4 2 7 6 7 10v2c0 7-5 12-12 12h-26V5zm12 18h10c2 0 3-1 3-3v-1c0-2-1-3-3-3h-10v7zm0 20h12c2 0 3-2 3-3v-2c0-2-1-3-3-3h-12v8z" fill={fill}/>
+  <!-- O -->
+  <path d="M214 5h24c7 0 12 5 12 12v21c0 7-5 12-12 12h-24c-7 0-12-5-12-12V17c0-7 5-12 12-12zm2 12v19h20V17h-20z" fill={fill}/>
+  <!-- A -->
+  <path d="M258 5h28l16 50h-14l-3-10h-18l-3 10h-14l8-50zm6 30h16l-8-22-8 22z" fill={fill}/>
+  <!-- T -->
+  <path d="M298 5h30v12h-9v38h-12V17h-9V5z" fill={fill}/>
+</svg>

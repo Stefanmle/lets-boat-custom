@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+
+import eriksbergImg from "@/assets/images/eriksberg-crane.webp";
+import brandImg from "@/assets/images/letsboat-brand.webp";
+import barkenImg from "@/assets/images/barken-viking.webp";
+
+const sightseeing = [
+  {
+    name: "Eriksberg",
+    description: "Passera vackra Eriksberg med sin imponerande silhuett och historiska varvsområde.",
+    image: eriksbergImg,
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Eriksberg+Göteborg",
+  },
+  {
+    name: "Gamla Hamnen",
+    description: "Glid förbi Gamla Hamnen och njut av den klassiska göteborgsatmosfären vid vattnet.",
+    image: brandImg,
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Gamla+Hamnen+Göteborg",
+  },
+  {
+    name: "Barken Viking",
+    description: "Beundra ikoniska Barken Viking från vattnet – en av Göteborgs mest kända landmärken.",
+    image: barkenImg,
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Barken+Viking+Göteborg",
+  },
+];
+---
+
+<section class="bg-sand py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Upptäck Göteborg</span>
+      <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl lg:text-5xl">
+        Saker att se längs rutten
+      </h2>
+      <p class="mt-4 text-text/60">Njut av dessa fantastiska sevärdheter från vattnet under er tur</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sightseeing.map((spot) => (
+        <a
+          href={spot.mapUrl}
+          target="_blank"
+          rel="noopener"
+          class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl"
+        >
+          <div class="relative h-56 overflow-hidden sm:h-64">
+            <Image
+              src={spot.image}
+              alt={spot.name}
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              widths={[400, 600]}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ocean/70 via-transparent to-transparent"></div>
+            <h3 class="absolute bottom-4 left-5 font-heading text-xl font-bold text-white drop-shadow-lg">{spot.name}</h3>
+          </div>
+          <div class="p-5">
+            <p class="text-sm leading-relaxed text-text/70">{spot.description}</p>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-dark group-hover:text-cyan">
+              Visa på karta
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
