@@ -129,7 +129,7 @@ const bookingUrl = "https://lets-boat.letsbook.app/sv-se/form/boats?boatModelId=
   if (video && window.matchMedia("(min-width: 768px)").matches) {
     // Wait for page to be fully interactive before loading video
     const loadVideo = () => {
-      video.src = "/letsboat-video.mp4";
+      video.src = "https://o7nwpegr778kyfjf.public.blob.vercel-storage.com/letsboat-video.mp4";
       video.load();
       video.play().catch(() => {});
     };

@@ -6,3 +6,4 @@ dist
 .omc
 scripts/
 *.png
+.env*.local
