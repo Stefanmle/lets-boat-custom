@@ -4,12 +4,14 @@ import boatImg from "@/assets/images/boats-sunset.webp";
 import dockImg from "@/assets/images/dock-staff.webp";
 
 const specs = [
-  { icon: "users", label: "Upp till 12 personer", desc: "Gott om plats för hela gänget" },
+  { icon: "users", label: "Upp till 12 personer", desc: "Lyxiga båtar med gott om plats" },
   { icon: "bolt", label: "100% elektrisk", desc: "Tyst och miljövänlig – inga avgaser" },
   { icon: "no-license", label: "Ingen licens krävs", desc: "Vem som helst kan styra" },
-  { icon: "food", label: "Ta med mat & dryck", desc: "Egen picknick, bubbel och snacks" },
-  { icon: "vest", label: "Flytvästar ingår", desc: "Barn- och vuxenstorlekar ombord" },
-  { icon: "cancel", label: "Fri avbokning", desc: "Upp till 24 timmar före avfärd" },
+  { icon: "food", label: "Ta med mat & dryck", desc: "Picknick, bubbel och snacks tillåtet" },
+  { icon: "vest", label: "Sittdynor & flytvästar", desc: "I alla storlekar, barn till vuxen" },
+  { icon: "cancel", label: "Fri avbokning 24h", desc: "Avboka utan kostnad före avfärd" },
+  { icon: "dog", label: "Hundar välkomna", desc: "Ta med fyrbenta vänner ombord" },
+  { icon: "book", label: "Boka online på 30 sek", desc: "Tryggt och enkelt via mobil eller dator" },
 ];
 
 const iconMap: Record<string, string> = {
@@ -19,6 +21,8 @@ const iconMap: Record<string, string> = {
   food: `<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>`,
   vest: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
   cancel: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+  dog: `<path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48a4.53 4.53 0 01-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"/>`,
+  book: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>`,
 };
 ---
 
