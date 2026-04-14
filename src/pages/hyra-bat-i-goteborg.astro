@@ -1,0 +1,412 @@
+---
+import { Image } from "astro:assets";
+import Base from "@/layouts/Base.astro";
+import Pricing from "@/components/Pricing.astro";
+import FindUs from "@/components/FindUs.astro";
+import boatsSunsetImg from "@/assets/images/boats-sunset.webp";
+import boatPhotoImg from "@/assets/images/boat-photo.webp";
+import mapRoutesImg from "@/assets/images/map-routes.webp";
+import eriksbergImg from "@/assets/images/eriksberg-crane.webp";
+
+const bookingUrl = "https://lets-boat.letsbook.app/sv-se/form/boats?boatModelId=f000715e-a251-42c5-b181-62566984bc42&dockId=e8fa42df-57d7-4d40-b5fd-6680c040d90e";
+
+const sellingPoints = [
+  "Ingen licens eller båtvana krävs",
+  "Upp till 12 personer per båt",
+  "Ta med egen mat, dryck och hund",
+  "Gratis digital guide med sevärdheter",
+];
+
+const whyLetsBoat = [
+  {
+    title: "Kör själv direkt från Lilla Bommen",
+    text: "Du bokar online, kliver ombord mitt i centrala Göteborg och ger dig ut i egen takt. Ingen skipper, inga krångliga moment.",
+  },
+  {
+    title: "Tysta och moderna elbåtar",
+    text: "Våra elbåtar är enkla att manövrera, tystgående och 100% elektriska. Det gör turen lugnare, skönare och mer premium.",
+  },
+  {
+    title: "Perfekt för allt från dejt till afterwork",
+    text: "Hyr båt i Göteborg för familjen, kompisgänget, företaget eller en romantisk kvällstur. Samma båt, helt olika upplevelser.",
+  },
+  {
+    title: "Flexibla turer på 1, 2 eller 3 timmar",
+    text: "En snabb citytur, en längre kanalrunda eller mer tid ute på Göta älv. Du väljer upplägg efter humör och sällskap.",
+  },
+  {
+    title: "Egen picknick ombord",
+    text: "Ta med snacks, lunch, bubbel eller fika. Det är just friheten ombord som gör att så många väljer Let's Boat framför en vanlig sightseeing.",
+  },
+  {
+    title: "Göteborg från sin bästa vinkel",
+    text: "Glid genom vallgraven, under broar och förbi klassiska landmärken. Det här är ett sätt att upptäcka staden som känns både lokalt och exklusivt.",
+  },
+];
+
+const routeIdeas = [
+  {
+    title: "1 timme",
+    text: "Perfekt om ni vill känna på friheten och se de centrala delarna av Göteborg från vattnet. En smidig tur genom citynära vatten och vallgraven.",
+  },
+  {
+    title: "2 timmar",
+    text: "Vårt mest populära val. Ni hinner njuta av fler kanaler, fler broar och fler ikoniska vyer i lugn takt utan att känna er stressade.",
+  },
+  {
+    title: "3 timmar eller mer",
+    text: "För er som vill upptäcka mer av Göta älv, åka vidare mot Eriksberg och få en längre upplevelse på vattnet. En favorit för större sällskap och långluncher.",
+  },
+];
+
+const useCases = [
+  {
+    href: "/familjetur",
+    title: "Familjetur",
+    text: "Ett lugnt äventyr där barnen får vara kapten för dagen.",
+  },
+  {
+    href: "/afterwork",
+    title: "Afterwork",
+    text: "Byt baren mot kvällssol, utsikt och egen spellista ombord.",
+  },
+  {
+    href: "/mohippa",
+    title: "Möhippa",
+    text: "Fira bruden med en upplevelse som känns både festlig och exklusiv.",
+  },
+  {
+    href: "/teambuilding-i-goteborg",
+    title: "Teambuilding",
+    text: "En avslappnad aktivitet där teamet umgås på riktigt.",
+  },
+  {
+    href: "/kompisarna",
+    title: "Kompisgänget",
+    text: "Perfekt för sommarhäng, födelsedagar och spontana planer.",
+  },
+  {
+    href: "/dejten",
+    title: "Dejten",
+    text: "En av Göteborgs mest romantiska upplevelser när solen börjar gå ner.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Behöver man körkort eller båtvana för att hyra båt i Göteborg?",
+    answer:
+      "Nej. Våra elbåtar är gjorda för att vara enkla att köra, även för förstagångsgäster. Du får tydliga instruktioner och kommer snabbt iväg.",
+  },
+  {
+    question: "Hur många personer får plats i båten?",
+    answer:
+      "Varje båt rymmer upp till 12 personer. Det gör Let's Boat till ett bra val både för mindre sällskap och större grupper.",
+  },
+  {
+    question: "Får man ta med egen mat och dryck ombord?",
+    answer:
+      "Ja. Du får ta med egen mat, snacks, alkoholfri dryck och alkohol. Många väljer att packa picknick, lunch eller bubbel till turen.",
+  },
+  {
+    question: "Vad ingår när man hyr båt hos Let's Boat?",
+    answer:
+      "Flytvästar, sittdynor och en digital guide ingår. Den digitala guiden hjälper er att upptäcka sevärdheter och få ut mer av turen.",
+  },
+  {
+    question: "Var startar båtturen?",
+    answer:
+      "Ni startar vid Lilla Bommen i centrala Göteborg, vilket gör det enkelt att ta sig till båten till fots, med kollektivtrafik eller bil.",
+  },
+  {
+    question: "Hur lång tur ska man boka?",
+    answer:
+      "En timme passar bra för en kort citytur, två timmar är vårt mest populära alternativ och tre timmar är bäst om ni vill upptäcka mer av Göteborgs vatten i lugn takt.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<Base
+  title="Hyra båt i Göteborg – Hyr elbåt utan körkort | Let's Boat"
+  description="Vill du hyra båt i Göteborg? Hos Let's Boat kör du en modern elbåt själv från Lilla Bommen. Ingen licens krävs, digital guide ingår och plats finns för upp till 12 personer."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="relative overflow-hidden bg-ocean pb-24 pt-32 sm:pb-32 sm:pt-44">
+    <div class="absolute inset-0">
+      <Image
+        src={boatsSunsetImg}
+        alt="Hyra båt i Göteborg med Let's Boat vid Lilla Bommen"
+        class="h-full w-full object-cover opacity-25"
+        widths={[480, 768, 1440]}
+        sizes="100vw"
+        loading="eager"
+        quality={50}
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-ocean/70 via-ocean/60 to-ocean/90"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+      <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan backdrop-blur-sm">
+        Hyr båt i Göteborg
+      </span>
+      <h1 class="mt-6 font-heading text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
+        Hyra båt i Göteborg
+        <span class="mt-2 block bg-gradient-to-r from-cyan to-cyan-dark bg-clip-text text-transparent">
+          enkelt, snyggt och helt på egen hand
+        </span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/75 sm:text-xl">
+        Hos Let's Boat hyr du en modern elbåt i Göteborg och styr själv genom vallgraven, kanalerna och vidare ut på stadens vatten. Ingen licens krävs, digital guide ingår och ni har plats för upp till 12 personer ombord.
+      </p>
+
+      <div class="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+        {sellingPoints.map((item) => (
+          <div class="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-left backdrop-blur-sm">
+            <svg class="h-5 w-5 shrink-0 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-sm font-medium text-white/90">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-6 font-heading text-xl font-bold text-white sm:text-2xl">Från 250 kr/person</p>
+
+      <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full bg-cyan px-8 py-4 text-base font-bold text-ocean shadow-2xl shadow-cyan/30 transition-all hover:scale-105 hover:bg-cyan-dark"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Boka båt i Göteborg
+        </a>
+        <a
+          href="/sa-har-gor-du"
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-4 text-sm font-medium text-white/80 transition-all hover:bg-white/10"
+        >
+          Så här går det till
+        </a>
+      </div>
+
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <a href="https://www.google.com/maps/place/Let%C2%B4s+Boat/@57.7110522,11.9623319,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff3d1b9b45d51:0xc02f276620d8b0e7!8m2!3d57.7110494!4d11.9649122!16s%2Fg%2F11q_6125d6" target="_blank" rel="noopener" class="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white/80 transition-colors hover:bg-white/20">
+          <svg class="h-3.5 w-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          4.9 på Google
+        </a>
+        <a href="https://www.tripadvisor.com/Attraction_Review-g189894-d23111918-Reviews-Lets_Boat-Gothenburg_Vastra_Gotaland_County_West_Coast.html" target="_blank" rel="noopener" class="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white/80 transition-colors hover:bg-white/20">
+          <svg class="h-3.5 w-3.5 text-tripadvisor" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          4.9 på TripAdvisor
+        </a>
+        <span class="rounded-full bg-white/10 px-3 py-1.5 text-sm text-white/80">100% elektrisk</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-ocean sm:text-3xl">Hyra båt i Göteborg utan körkort</h2>
+        <p class="mt-4 text-lg leading-relaxed text-text/80">
+          Vill du hyra båt i Göteborg och faktiskt få friheten att upptäcka staden i egen takt? Då är Let's Boat gjort för dig. Ni startar vid Lilla Bommen, kliver ombord på en modern elbåt och kör själva direkt ut på Göteborgs vatten.
+        </p>
+        <p class="mt-4 leading-relaxed text-text/70">
+          Våra båtar är enkla att manövrera och kräver ingen tidigare båtvana. Därför passar upplevelsen lika bra för par, familjer, kompisgäng, företagsevent och spontana sommardagar när ni bara vill göra något riktigt bra av tiden i Göteborg.
+        </p>
+        <p class="mt-4 leading-relaxed text-text/70">
+          På 1 till 2 timmar får ni en härlig tur genom centrala Göteborgs kanaler och vallgrav. Vill ni se ännu mer kan ni boka längre tid och fortsätta ut mot Göta älv och vidare mot Eriksberg. Flytvästar, sittdynor och digital guide ingår alltid.
+        </p>
+      </div>
+
+      <div class="relative">
+        <Image
+          src={boatPhotoImg}
+          alt="Elbåt redo att hyras i Göteborg"
+          class="w-full rounded-3xl shadow-2xl"
+          widths={[420, 640, 800]}
+          sizes="(max-width: 1024px) 100vw, 42vw"
+          quality={55}
+        />
+        <div class="absolute -bottom-5 left-5 rounded-2xl bg-white px-5 py-4 shadow-xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-dark">Startplats</p>
+          <p class="mt-1 text-lg font-bold text-ocean">Lilla Bommen</p>
+          <p class="text-sm text-text/70">Mitt i centrala Göteborg</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-sand py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Varför välja oss</span>
+        <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+          Därför väljer så många Let's Boat när de vill hyra båt i Göteborg
+        </h2>
+        <p class="mt-4 text-text/70">
+          Enkel bokning, tydliga instruktioner och en upplevelse som känns premium utan att bli krånglig.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {whyLetsBoat.map((item) => (
+          <div class="rounded-2xl bg-white p-7 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan/10 text-cyan-dark">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="mt-5 font-heading text-xl font-bold text-ocean">{item.title}</h3>
+            <p class="mt-3 leading-relaxed text-text/70">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-8">
+      <div class="overflow-hidden rounded-3xl bg-ocean shadow-2xl">
+        <Image
+          src={mapRoutesImg}
+          alt="Rutter för att hyra båt i Göteborg med Let's Boat"
+          class="w-full"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 1024px) 100vw, 40vw"
+        />
+      </div>
+
+      <div>
+        <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Planera turen</span>
+        <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+          Vad hinner man se när man hyr båt i Göteborg?
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-text/80">
+          Det fina med att hyra båt i Göteborg är att upplevelsen kan vara både spontan och maxad. Vissa vill bara njuta av citypulsen från vattnet. Andra vill göra en längre tur med picknick, musik och fler stopp i den digitala guiden.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          {routeIdeas.map((route) => (
+            <div class="rounded-2xl border border-sand-dark bg-white p-5 shadow-sm">
+              <h3 class="font-heading text-xl font-bold text-ocean">{route.title}</h3>
+              <p class="mt-2 leading-relaxed text-text/70">{route.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-6 text-sm text-text/70">
+          Populära vyer längs vägen är vallgraven, Göteborgs kanaler, Barken Viking, citykärnan och på längre turer områden mot Eriksberg och Göta älv.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+        <div>
+          <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">För rätt sällskap</span>
+          <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+            Hyr båt i Göteborg för mer än bara en vanlig tur
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-text/80">
+            Den här sidan fångar den breda upplevelsen, men samma båt kan också bli möhippa, afterwork, familjeutflykt eller romantisk dejt beroende på vem du tar med dig ombord.
+          </p>
+          <p class="mt-4 leading-relaxed text-text/70">
+            Vill du landa på en mer specifik sida för ert upplägg? Här är våra mest populära alternativ.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {useCases.map((item) => (
+            <a href={item.href} class="group rounded-2xl border border-sand-dark bg-sand/40 p-5 transition-all hover:-translate-y-1 hover:bg-sand hover:shadow-lg">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="font-heading text-xl font-bold text-ocean">{item.title}</h3>
+                <svg class="mt-1 h-5 w-5 shrink-0 text-cyan-dark transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+              <p class="mt-3 leading-relaxed text-text/70">{item.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-sand py-16 sm:py-24">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8">
+      <div>
+        <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Göteborg från vattnet</span>
+        <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+          En premiumkänsla som börjar redan vid bryggan
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-text/80">
+          När någon söker efter att hyra båt i Göteborg är det sällan bara båten de vill åt. De vill åt känslan: friheten, utsikten, samtalen, skratten och den där timmen eller två som känns större än de borde göra.
+        </p>
+        <p class="mt-4 leading-relaxed text-text/70">
+          Därför bygger Let's Boat på enkelhet och känsla. Du slipper motorljud, stress och komplicerade instruktioner. I stället får du en tyst elbåt, ett centralt läge och Göteborg serverat från första parkett.
+        </p>
+      </div>
+
+      <div class="overflow-hidden rounded-3xl shadow-2xl">
+        <Image
+          src={eriksbergImg}
+          alt="Utsikt över Göteborg från vattnet nära Eriksberg"
+          class="h-full w-full object-cover"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 1024px) 100vw, 38vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <section class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <span class="text-sm font-semibold uppercase tracking-widest text-cyan-dark">Vanliga frågor</span>
+        <h2 class="mt-3 font-heading text-3xl font-bold text-ocean sm:text-4xl">
+          Frågor om att hyra båt i Göteborg
+        </h2>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        {faqItems.map((item) => (
+          <details class="group rounded-2xl border border-sand-dark bg-sand/30 p-6 shadow-sm transition-colors open:bg-white">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-heading text-lg font-bold text-ocean">
+              <span>{item.question}</span>
+              <svg class="h-5 w-5 shrink-0 text-cyan-dark transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <p class="mt-4 leading-relaxed text-text/70">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FindUs />
+</Base>

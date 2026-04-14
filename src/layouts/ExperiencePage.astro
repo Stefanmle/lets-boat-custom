@@ -5,9 +5,10 @@ import { t } from "@/i18n";
 
 interface Props {
   slug: keyof typeof import("@/i18n/sv").default.experiencePages;
+  canonical?: string;
 }
 
-const { slug } = Astro.props;
+const { slug, canonical } = Astro.props;
 const i = t();
 const page = i.experiencePages[slug];
 const bookingUrl = "https://lets-boat.letsbook.app/sv-se/form/boats?boatModelId=f000715e-a251-42c5-b181-62566984bc42&dockId=e8fa42df-57d7-4d40-b5fd-6680c040d90e";
@@ -20,7 +21,7 @@ const imgKey = `../assets/images/${page.image}.webp`;
 const heroImage = images[imgKey] ? (await images[imgKey]()).default : null;
 ---
 
-<Base title={page.metaTitle} description={page.metaDescription}>
+<Base title={page.metaTitle} description={page.metaDescription} canonical={canonical}>
   <!-- Hero with large background image -->
   <section class="relative overflow-hidden bg-ocean pb-24 pt-32 sm:pb-32 sm:pt-44">
     {heroImage && (

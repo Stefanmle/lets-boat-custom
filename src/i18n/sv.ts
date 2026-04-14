@@ -51,7 +51,7 @@ export default {
         icon: "party",
       },
       {
-        slug: "teambuilding",
+        slug: "teambuilding-i-goteborg",
         title: "Teambuilding",
         description:
           "Stärk teamkänslan med en dag på vattnet. Perfekt för företagsevent.",

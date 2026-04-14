@@ -12,7 +12,9 @@ interface Props {
 
 const { title, description, ogImage = "/og-image.jpg", canonical } = Astro.props;
 const siteUrl = import.meta.env.SITE ?? Astro.site?.href ?? "https://lets-boat-custom.vercel.app";
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const canonicalUrl = canonical
+  ? new URL(canonical, siteUrl).href
+  : new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
@@ -32,6 +34,7 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    <slot name="head" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
