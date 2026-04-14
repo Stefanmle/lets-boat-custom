@@ -6,8 +6,11 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   site: "https://letsboat.se",
   output: "static",
+  build: {
+    inlineStylesheets: "always",
+  },
   adapter: vercel({
-    webAnalytics: { enabled: true },
+    webAnalytics: { enabled: process.env.VERCEL === "1" },
   }),
   i18n: {
     defaultLocale: "sv",

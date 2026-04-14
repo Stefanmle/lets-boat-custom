@@ -1,10 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Varela Round";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/varela-round-latin.woff2") format("woff2");
+}
+
 @theme {
   --color-ocean: #253861;
   --color-ocean-light: #3D4459;
   --color-cyan: #06D9FA;
   --color-cyan-dark: #036475;
+  --color-tripadvisor: #0B5D48;
+  --color-tripadvisor-dark: #084638;
+  --color-tripadvisor-soft: #E4F4EE;
   --color-sand: #F9F9F9;
   --color-sand-dark: #E9E9E9;
   --color-text: #353535;
